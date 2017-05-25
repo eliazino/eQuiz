@@ -3,7 +3,6 @@ var responsum = [];
 temere = 34;
 litterae = ['A','b','c','d','e','f'];
 function myFunc(spreadsheetdata) {
-  // do something with spreadsheet data here
   sData = spreadsheetdata;
   columnCount = sData.feed.link.length;
   epistula = sData.feed.entry;
@@ -21,8 +20,7 @@ function myFunc(spreadsheetdata) {
           opti = template.optionem(resp, Question);
           qes = template.quaestio(quas);
           html = template.osseus(qes, opti, Question);
-          template.insertHTML(html)
-          //getTrivia(Question);
+          template.insertHTML(html);
       }
     start += columnCount;
     Question++;
