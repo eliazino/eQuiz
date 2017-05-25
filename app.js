@@ -12,8 +12,6 @@ app.set('view engine', 'ejs');
 *Initializing session parameter
 *
 */
-app.use(session({secret: 'falppyBirdaCarionEater', saveUninitialized: true,
-                 resave: true}));
 /*
 *
 *bodyParser helps us retrieve parameters
