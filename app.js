@@ -39,4 +39,6 @@ app.use(function(req, res, next){
                                                                                                                               
 
 app.listen(process.env.PORT || 8888);
-console.log('3000 is the magic port');
+app.listen(port, function() {
+    console.log("App is running on port " + port);
+});
