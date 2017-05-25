@@ -1,6 +1,5 @@
 // load the things we need
 var express = require('express');
-var session = require('express-session');
 var bodyParser = require('body-parser');
 var app = express();
 var sha1 = require('sha1');
