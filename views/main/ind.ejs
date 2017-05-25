@@ -1,0 +1,162 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scribo, nomi Elia">
+    <meta name="author" content="Elias">
+    <meta name="keywords" content="">
+    <title>Home</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+       
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+
+      <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <style>
+      body{
+        padding-top: 80px !important;
+      }
+      .instruction{
+        padding: 12px;
+        width: 100%;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+        color: darkgrey;
+      }
+      .question-item{
+        padding: 20px;
+        color: #dd4f17;
+      }
+      .question-item .question{
+        padding: 10px;
+        font-size: 16px;
+      }
+      .headerMat{
+        z-index: 2000;
+      }
+      .question-item .options{
+        padding-top: 24px;
+      }
+      .trivia{
+        color: 485d5d;
+        padding: 8px;
+      }
+      .fill{
+	  z-index: 1999;
+        padding-top: 80px;
+        width: 100%;
+        position: fixed;
+        height: 100%;
+        background: #fff;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+      }
+      .fill div img{
+        max-height: 400px;
+        width: auto;
+      }
+      .question{
+        border: thin solid #e4d4d4;;
+      }
+    </style>
+  </head>
+
+
+  <body style="color:#55767b; background-color:#f9f9f9;">
+
+    <div class="row headerMat" style="border-bottom:#e3dddd thin solid; position:fixed; top:0px; left:0px; right:0px; width:101%; background:#fff"> 
+    <div class="col-sm-2" align="right">
+      <img src="img/logo.fw.png" class="img-responsive" style="width:70px; height:auto" />
+    </div>
+    <div class="col-sm-10">
+      <div class="h1" align="left" style="padding-top:20px"> eQuiz</div>
+    </div>
+    </div>
+
+    <div class="row instruction">
+    <div class="col-sm-12">
+      <div class="alert alert-info" role="alert">
+        <strong>instructions</strong> Obviously, the instruction is to choose the correct answer to each question
+      </div>
+    </div>
+    </div>
+<div id="recep">
+
+</div>
+
+
+<div class="fill" align="center">
+<div align="center"><img src="img/d.png" /></div>
+<div align="center"><div class="btn btn-lg btn-primary" id="start" onclick="$('.fill').hide()">Continue to the Quiz</div></div>
+</div>
+<div align="center"><div class="btn btn-lg btn-primary" id="start" onclick="submit()">Click to submit</div></div>
+
+<form id="foo" style="display:none">
+    <p><label for="name">Name:</label>
+    <input id="name" name="name" value="" type="text"></p>
+    <p><label for="score">Comment:</label><br>
+    <input id="score" name="score" value="0" type="text"></p>
+    <p id="result"></p>
+    <input value="Send" type="submit">
+</form>
+  </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="monkey.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script data-cfasync="false" type="text/javascript">
+jQuery( document ).ready(function( $ ) {
+	var request;
+	$("#foo").submit(function(event){
+		if (request) {
+			request.abort();
+		}
+		var $form = $(this);
+		var $inputs = $form.find("input, select, button, textarea");
+		var serializedData = $form.serialize();
+		$(".fill").show('slow');
+		str = '<div align="center"><h3>Your score is<h3><h3 style="color:3c763d">'+$("#score").val()+'</h3></div>'
+		$(".fill").html(str +'<div align="center"><i class="fa fa-spinner fa-spin fa-2x"></i><h3>...Inducting you to our hall of fame!!</h3></h3>');
+		// fire off the request to /form.php
+		request = $.ajax({
+			url: "https://script.google.com/macros/s/AKfycbzj6gtOxeqV5oGmKlO47WPQBU0wJp_GaTlqKLj2nHC6tSHh6OVL/exec",
+			type: "post",
+			data: serializedData
+		});
+	
+		// callback handler that will be called on success
+		request.done(function (response, textStatus, jqXHR){
+			// log a message to the console
+			str = '<div class="alert alert-success" role="alert"><strong>Mihi Feliciti!! </strong> You have no idea how happy i am to see this work</div><h3>You have been succesfully recorded</h3><a href="https://docs.google.com/spreadsheets/d/1yjid40Gk-CrCUQ8r2oVLR_UVZKeyG6IVrfnJy0bVMh0/edit#gid=0" target="_blank">see Google Sheet</a>'
+			$('.fill').html(str);
+		});
+	
+		// callback handler that will be called on failure
+		request.fail(function (jqXHR, textStatus, errorThrown){
+		str = '<div class="alert alert-danger" role="alert"><strong>Mihi Miseri</strong> Errata!</div>';
+		$('.fill').html(str);
+			// log the error to the console
+			console.error(
+				"The following error occured: "+
+				textStatus, errorThrown
+			);
+		});
+	
+		// callback handler that will be called regardless
+		// if the request failed or succeeded
+		request.always(function () {
+			// reenable the inputs
+			$inputs.prop("disabled", false);
+		});
+	
+		// prevent default posting of form
+		event.preventDefault();
+	});
+});
+</script>
+    <script src="http://spreadsheets.google.com/feeds/cells/16p10gllBu5vEFlHODUvVXLlW8OVrFtD5kKM__krRY0Q/1/public/basic?alt=json-in-script&callback=myFunc"></script>
+<html>

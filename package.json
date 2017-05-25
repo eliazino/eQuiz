@@ -1,0 +1,29 @@
+{
+  "name": "eQuiz",
+  "version": "1.0.0",
+  "description": "An eQuiz",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eliazino/eQuiz.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "mysql"
+  ],
+  "author": "elias akin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eliazino/eQuiz/issues"
+  },
+  "homepage": "https://github.com/eliazino/eQuiz#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "marked": "^0.3.6"
+  }
+}
