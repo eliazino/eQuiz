@@ -37,8 +37,7 @@ app.use(function(req, res, next){
   res.render('main/error', { status: 404, url: req.url });
 });
                                                                                                                               
-
-app.listen(process.env.PORT || 8888);
+var port = process.env.PORT || 8000
 app.listen(port, function() {
     console.log("App is running on port " + port);
 });
