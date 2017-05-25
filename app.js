@@ -2,7 +2,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var sha1 = require('sha1');
 app.use(express.static(__dirname + '/public'));
 // set the view engine to ejs
 app.set('view engine', 'ejs');
